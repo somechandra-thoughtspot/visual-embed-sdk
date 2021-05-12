@@ -18,11 +18,14 @@ const getPathPrefix = () => {
 };
 
 const stripLinks = (text) =>{
-    const re = /<a\s.*?href=[\"\'](.*?)[\"\']*?>(.*?)<\/a>/g;
-    const str = text;
-    const subst = '$2';
-    const result = str.replace(re, subst);
-    return result;
+    if (text) {
+        const re = /<a\s.*?href=[\"\'](.*?)[\"\']*?>(.*?)<\/a>/g;
+        const str = text;
+        const subst = '$2';
+        const result = str.replace(re, subst);
+        return result;
+    }
+    return '';
 }
 
 const getPath = (path) =>
@@ -212,7 +215,7 @@ module.exports = {
                             )
                             .map((edge) => {
                                 const pageid = edge.node.pageAttributes.pageid;
-                                const body = htmlToText(stripLinks(edge.node.html))
+                                const body = htmlToText(stripLinks(edge?.node?.html))
                                 return {
                                     pageid,
                                     body,
@@ -225,7 +228,7 @@ module.exports = {
                             .filter((edge) => edge.node.extension === 'html')
                             .map((edge) => {
                                 const pageid = edge.node.name;
-                                const body = htmlToText(stripLinks(edge.node.childHtmlRehype.html))
+                                const body = htmlToText(stripLinks(edge?.node?.childHtmlRehype?.html))
 
                                 return {
                                     body,
