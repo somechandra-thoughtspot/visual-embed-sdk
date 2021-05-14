@@ -22,6 +22,7 @@ import {
     DEFAULT_HOST,
     DEFAULT_PREVIEW_HOST,
     DEFAULT_APP_ROOT,
+    SEARCH_STRING,
 } from '../configs/doc-configs';
 import {
     LEFT_NAV_WIDTH_DESKTOP,
@@ -42,6 +43,7 @@ const IndexPage = ({ location }) => {
         [TS_PAGE_ID_PARAM]: '',
         [NAV_PREFIX]: '',
         [PREVIEW_PREFIX]: `${DEFAULT_PREVIEW_HOST}/#${DEFAULT_APP_ROOT}`,
+        [SEARCH_STRING]: '',
     });
     const [docTitle, setDocTitle] = useState('');
     const [docContent, setDocContent] = useState('');
@@ -96,7 +98,7 @@ const IndexPage = ({ location }) => {
                 // get and set page title
                 setDocTitle(
                     edges[edgeIndex].node.document.title ||
-                        edges[edgeIndex].node.pageAttributes.title,
+                    edges[edgeIndex].node.pageAttributes.title,
                 );
 
                 // get and set doc page content with dynamic data replaced
@@ -200,6 +202,7 @@ const IndexPage = ({ location }) => {
     }, []);
 
     const optionSelected = (pageid: string) => {
+        setParams({ ...params, [SEARCH_STRING]: keyword });
         updateKeyword('');
         navigate(`${params[NAV_PREFIX]}=${pageid}`);
     };
