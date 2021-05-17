@@ -32,6 +32,7 @@ import {
 } from '../constants/uiConstants';
 import { SearchQueryResult } from '../interfaces';
 import { getAllPageIds } from '../components/LeftSidebar/helper';
+import t from '../utils/lang-utils';
 
 // markup
 const IndexPage = ({ location }) => {
@@ -210,7 +211,7 @@ const IndexPage = ({ location }) => {
         results.push({
             link: '',
             pageid: 'stringnotfound',
-            title: `Sorry. We could not find a match for "${keyword}".`,
+            title: t('KEYWORD_NOT_FOUND_MSG') + ` "${keyword}".`,
             type: 'text'
         });
     }
