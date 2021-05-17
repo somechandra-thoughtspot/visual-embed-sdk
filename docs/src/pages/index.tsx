@@ -206,6 +206,15 @@ const IndexPage = ({ location }) => {
 
     const isMaxMobileResolution = !(width < MAX_MOBILE_RESOLUTION);
 
+    if (keyword && !results.length) {
+        results.push({
+            link: '',
+            pageid: 'stringnotfound',
+            title: `Sorry. We could not find a match for "${keyword}".`,
+            type: 'text'
+        });
+    }
+
     return (
         <>
             {isPublicSiteOpen && <Header />}
