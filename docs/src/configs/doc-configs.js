@@ -6,7 +6,6 @@ module.exports = {
     TS_APP_ROOT_PARAM: 'appRoot',
     TS_PAGE_ID_PARAM: 'pageid',
     NAV_PREFIX: 'navprefix',
-    SEARCH_STRING: 'searchstring',
     PREVIEW_PREFIX: 'previewPrefix',
     VISUAL_EMBED_SDK_PREFIX: 'visualEmbedSDKPrefix',
     NOT_FOUND_PAGE_ID: '404-error',
